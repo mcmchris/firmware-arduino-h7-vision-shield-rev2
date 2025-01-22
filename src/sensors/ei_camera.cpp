@@ -37,7 +37,8 @@
 #define ALIGN_PTR(p,a)   ((p & (a-1)) ?(((uintptr_t)p + a) & ~(uintptr_t)(a-1)) : p)
 #define DWORD_ALIGN_PTR(p)  ALIGN_PTR(p,4)
 
-HM01B0 himax;
+//HM01B0 himax;
+HM0360 himax;
 static Camera cam(himax);
 static bool is_initialised = false;
 static bool is_ll_initialised = false;
@@ -125,7 +126,7 @@ bool ei_camera_init(void) {
 
     if (is_ll_initialised == false) {
 
-        if (!cam.begin(CAMERA_R320x240, CAMERA_GRAYSCALE, 30)) {
+        if (!cam.begin(CAMERA_R640x480, CAMERA_GRAYSCALE, 30)) {
             ei_printf("ERR: Failed to initialise camera\r\n");
             return false;
         }

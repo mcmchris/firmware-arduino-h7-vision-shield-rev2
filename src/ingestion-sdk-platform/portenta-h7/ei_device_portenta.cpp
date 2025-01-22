@@ -196,12 +196,14 @@ bool EiDevicePortenta::get_sensor_list(const ei_device_sensor_t **sensor_list, s
 bool EiDevicePortenta::get_snapshot_list(const ei_device_snapshot_resolutions_t **snapshot_list, size_t *snapshot_list_size,
                                          const char **color_depth)
 {
-    snapshot_resolutions[0].width = 320;
-    snapshot_resolutions[0].height = 240;
-    snapshot_resolutions[1].width = 160;
-    snapshot_resolutions[1].height = 120;
-    snapshot_resolutions[2].width = 128;
-    snapshot_resolutions[2].height = 96;
+    snapshot_resolutions[0].width = 640; // for the Portenta Vision Shield V2
+    snapshot_resolutions[0].height = 480; // for the Portenta Vision Shield V2
+    snapshot_resolutions[1].width = 320;
+    snapshot_resolutions[1].height = 240;
+    snapshot_resolutions[2].width = 160;
+    snapshot_resolutions[2].height = 120;
+    snapshot_resolutions[3].width = 128;
+    snapshot_resolutions[3].height = 96;
 
 #if defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_CAMERA
     snapshot_resolutions[2].width = EI_CLASSIFIER_INPUT_WIDTH;
@@ -238,6 +240,9 @@ bool EiDevicePortenta::get_resize_list(const ei_device_snapshot_resolutions_t **
 
     resize_resolutions[4].width = 320;
     resize_resolutions[4].height = 240;
+
+    resize_resolutions[5].width = 640;  // for the Portenta Vision Shield V2
+    resize_resolutions[5].height = 480;  // for the Portenta Vision Shield V2
 
     *resize_list      = resize_resolutions;
     *resize_list_size = EI_DEVICE_N_RESIZE_RESOLUTIONS;
